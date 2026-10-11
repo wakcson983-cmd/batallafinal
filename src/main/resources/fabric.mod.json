@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "hydra",
+  "version": "${version}",
+  "name": "HYDRA",
+  "description": "Dragón gigante negro y morado de 3 cabezas con 2 fases, fuego morado, música de batalla final y eventos cada 2 minutos. Se invoca con la ruleta de colores (Morado + HYDRA).",
+  "authors": [],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [ "com.hydra.HydraMod" ],
+    "client": [ "com.hydra.client.HydraClient" ]
+  },
+  "mixins": [ "hydra.mixins.json" ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "recommends": {
+    "ruleta_colores": "*"
+  },
+  "suggests": {
+    "momentoshardcore": "*",
+    "ruletaazul": "*"
+  }
+}

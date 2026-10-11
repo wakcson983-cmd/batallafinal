@@ -1,0 +1,8 @@
+{
+  "battle_music": {
+    "sounds": [
+      { "name": "hydra:battle", "stream": true }
+    ],
+    "subtitle": "subtitles.hydra.battle_music"
+  }
+}
