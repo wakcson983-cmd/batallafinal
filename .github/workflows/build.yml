@@ -1,0 +1,47 @@
+name: build
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+
+      - name: Compilar
+        run: gradle build --no-daemon
+
+      - name: Guardar el .jar como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: hydra-jar
+          path: build/libs/hydra-*.jar
+
+      - name: Mover el tag "latest"
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git tag -f latest
+          git push -f origin latest
+
+      - name: Publicar en Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: HYDRA (último build)
+          body: Descarga el archivo hydra-1.0.0.jar y ponlo en la carpeta mods.
+          files: build/libs/hydra-1.0.0.jar
