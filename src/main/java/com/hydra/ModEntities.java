@@ -20,13 +20,13 @@ public final class ModEntities {
                 EntityType.Builder.create(HydraEntity::new, SpawnGroup.MONSTER)
                         .dimensions(14.0f, 7.0f)
                         .maxTrackingRange(32)
-                        .fireImmune()
+                        .makeFireImmune()
                         .build("hydra"));
         HYDRA_HEAD = Registry.register(Registries.ENTITY_TYPE, Identifier.of(HydraMod.MOD_ID, "hydra_head"),
                 EntityType.Builder.create(HydraHeadEntity::new, SpawnGroup.MONSTER)
                         .dimensions(6.0f, 6.0f)
                         .maxTrackingRange(32)
-                        .fireImmune()
+                        .makeFireImmune()
                         .build("hydra_head"));
         FabricDefaultAttributeRegistry.register(HYDRA, HydraEntity.createHydraAttributes());
         FabricDefaultAttributeRegistry.register(HYDRA_HEAD, HydraHeadEntity.createHeadAttributes());
